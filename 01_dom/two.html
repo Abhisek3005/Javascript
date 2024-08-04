@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM with Chai aur Code</title>
+</head>
+<body style="background-color: black; color: aliceblue;" >
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+   const partent=  document.querySelector(".parent")
+//    console.log(partent);
+//    console.log(partent.children[1].innerHTML);
+   for (let i = 0; i < partent.children.length; i++) {
+    console.log(partent.children[i].innerHTML);
+    
+   }
+   partent.children[0].style.color = "green"
+   console.log(partent.firstElementChild); //output:<div class="day" style="color: green;">Monday</div>
+   console.log(partent.lastElementChild)
+
+   const day1 = document.querySelector('.day')
+   console.log(day1)
+
+   console.log(day1.parentElement); // it will tell all the parent element
+   console.log(day1.nextElementSibling);// output is tuesday ,after monday
+
+   console.log("NODES:",partent.childNodes); // output of the nodelist = 9 ,beacuse it will also count the enter as text and also div.day
+
+   
+   
+   
+   
+</script>
+</html>

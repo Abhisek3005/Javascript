@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM with chai aur code</title>
+</head>
+<body style="background-color: black; color: antiquewhite;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function add_language (lang_name){
+        const li = document.createElement('li');
+        li.innerHTML = `${lang_name}`;
+        document.querySelector('.language').appendChild(li);
+
+    }
+    add_language("Python")
+    add_language("Ruby")
+
+    function addoptilanguage(langname){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langname));
+        document.querySelector('.language').appendChild(li)
+    }
+    addoptilanguage("golang")
+
+    //Edit
+    const second_lang = document.querySelector('li:nth-child(2)'); //if there is any problem just console log it and find the output in the browser console
+    //second_lang.innerHTML = "Gojo"
+    const new_li 
+     = document.createElement('li');
+    new_li.textContent = "Gojo"
+    second_lang.replaceWith(new_li);
+
+    //edit
+    const first_lang = document.querySelector("li:first-child");
+    first_lang.outerHTML = '<li>typescript</li>'
+
+    //remove
+    const lastlang = document.querySelector("li:last-child");
+    lastlang.remove()
+
+</script>
+</html>
