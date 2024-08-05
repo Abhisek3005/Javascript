@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // document.getElementById('owl').onclick = function(){
+    //     alert("Owl Clicked");
+    // }
+    //attchEvent()  these are the methods
+    //jquerey - on
+    //type, timestamp, defaultPrevented
+    //target, toElemet, srcElement ,currentTarget
+    //clientX, clientY, screenX, screenY
+    //altkey, ctrlkey, shiftkey, keycode     These are the Events to learn
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log('Clicked inside the ul');
+        
+    },false); // this false is known as event propagation or bubling if the ul and owl clicked is false then when we click the owl first it will show the owl clicked then ul in console but in true case it reversed and called as capturing mode.(Top-Bottom)
+
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log('owl Clicked');
+        e.stopPropagation()//this method will act as like preventDefault and it will not go to th ul
+        
+    },false);
+
+    document.getElementById('google').addEventListener('click',function(e){
+        e.preventDefault();
+        e.stopPropagation()
+        console.log('google clicked');
+        
+ 
+    },false)
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        //console.log(e.target); //from which target(photoshop,river,owl) the event is occuring
+        //console.log(e.target.parentNode);// parentNode gives the <li> of that what is clicked
+        console.log(e.target.tagName)  //give the tag name  
+        if(e.target.tagName === 'IMG'){
+            let removeIt = e.target.parentNode
+            removeIt.remove();
+
+        }    
+        
+        //removeIt.parentNode.removeChild(removeIt);
+        
+    },false)
+    
+    
+</script>
+</html>
